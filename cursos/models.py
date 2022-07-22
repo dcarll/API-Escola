@@ -8,7 +8,7 @@ class Base(models.Model):
     ativo = models.BooleanField(default=True)
 
     class Meta:
-        abstract=True
+        abstract = True
 
 class Curso(Base):
     titulo = models.CharField(max_length=255)
@@ -31,9 +31,6 @@ class Avaliacao(Base):
     class Meta:
         verbose_name = 'Avaliação'
         verbose_name_plural = 'Avaliações'
-
-        #uma pessoa só pode avaliar o curso uma vez com o esse email
-        unique_together = ['email', 'curso']
-
+        unique_together = ['email','curso']
     def __str__(self):
-        return f'{self.nome} avaliou o corso {self.curso} com nota {self.avaliacao}'
+        return f'{self.nome} avaliou o curso {self.curso} com nota {self.avaliacao}'
